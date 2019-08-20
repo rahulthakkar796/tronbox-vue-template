@@ -1,16 +1,36 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
+<script>
+import tronWeb from "tronweb";
+import utils from "./utils.js";
+export default {
+  data() {
+    return {
+      address: "TL9FEDctrx5zvMdJWHGpeZCFCyghXMeE59"
+    };
+  },
+  async created() {
+    let TronWeb = new tronWeb(
+      "https://api.shasta.trongrid.io",
+      "https://api.shasta.trongrid.io",
+      "https://api.shasta.trongrid.io",
+      "1afd1adcb78ba038a4965b89d2b6b77e226d3eefc2be6a2bce2287a44a9f1966"
+    );
+    TronWeb.defaultAddress = {
+      hex: TronWeb.address.toHex(this.address),
+      base58: this.address
+    };
+    await utils.setTronWeb(TronWeb);
+  }
+};
+</script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
