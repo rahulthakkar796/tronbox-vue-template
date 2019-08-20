@@ -17,7 +17,7 @@ export default {
       "https://api.shasta.trongrid.io",
       "https://api.shasta.trongrid.io",
       "https://api.shasta.trongrid.io",
-      "1afd1adcb78ba038a4965b89d2b6b77e226d3eefc2be6a2bce2287a44a9f1966"
+      "Your private key"
     );
     TronWeb.defaultAddress = {
       hex: TronWeb.address.toHex(this.address),
